@@ -37,6 +37,7 @@ pub use rlp;
 pub use hex;
 
 use crate::types::{Address, Bytes, ParseI256Error, H256, I256, U256};
+use alloc::vec::Vec;
 use ethabi::ethereum_types::FromDecStrErr;
 use k256::ecdsa::SigningKey;
 use std::{
