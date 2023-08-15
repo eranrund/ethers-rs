@@ -2,9 +2,9 @@ use crate::types::{
     serde_helpers::{deserialize_stringified_numeric, deserialize_stringified_numeric_opt},
     Address, Bytes, NameOrAddress, H256, U256,
 };
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+
+use alloc::string::String;
+use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 
 // https://github.com/ethereum/go-ethereum/blob/91cb6f863a965481e51d5d9c0e5ccd54796fd967/eth/tracers/native/call.go#L44

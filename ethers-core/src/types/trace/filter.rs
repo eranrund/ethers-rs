@@ -1,8 +1,8 @@
 //! Types for the Parity Transaction-Trace Filtering API
 use crate::types::{Address, BlockNumber, Bytes, H160, H256, U256};
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+
+use alloc::string::String;
+use alloc::vec::Vec;
 use bytes::{Buf, BufMut};
 use core::fmt;
 use open_fastrlp::DecodeError;

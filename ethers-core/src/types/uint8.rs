@@ -3,9 +3,9 @@
 //! The reason this exists is to circumvent ambiguity with fixed bytes arrays
 
 use crate::abi::{InvalidOutputType, Tokenizable, TokenizableItem};
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
-use alloc::{format, vec, vec::Vec};
+
+use alloc::format;
+use alloc::string::ToString;
 use core::ops::{Add, Sub};
 use ethabi::{ethereum_types::U256, Token};
 use serde::{Deserialize, Serialize};

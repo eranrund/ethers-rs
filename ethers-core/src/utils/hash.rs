@@ -1,8 +1,7 @@
 //! Various utilities for manipulating Ethereum related data.
 
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::string::ToString;
+use alloc::vec::Vec;
 use ethabi::ethereum_types::H256;
 use tiny_keccak::{Hasher, Keccak};
 

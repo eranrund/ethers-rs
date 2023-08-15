@@ -2,8 +2,7 @@ use super::{eip2718::TypedTransaction, normalize_v};
 use crate::types::{
     Address, Bytes, Signature, SignatureError, Transaction, TransactionRequest, H256, U256, U64,
 };
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
+
 use alloc::{vec, vec::Vec};
 use open_fastrlp::{
     RlpDecodable as FastRlpDecodable, RlpDecodableWrapper as FastRlpDecodableWrapper,

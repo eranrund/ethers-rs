@@ -1,7 +1,7 @@
 use crate::types::Address;
-use alloc::boxed::Box;
+
+use alloc::format;
 use alloc::string::{String, ToString};
-use alloc::{format, vec, vec::Vec};
 use core::{cmp::Ordering, str::FromStr};
 use rlp::{Decodable, Encodable, RlpStream};
 use serde::{ser::Error as SerializationError, Deserialize, Deserializer, Serialize, Serializer};

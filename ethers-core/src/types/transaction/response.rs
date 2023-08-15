@@ -10,8 +10,7 @@ use crate::{
     },
     utils::keccak256,
 };
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
+
 use alloc::{vec, vec::Vec};
 use core::cmp::Ordering;
 use rlp::{Decodable, DecoderError, RlpStream};

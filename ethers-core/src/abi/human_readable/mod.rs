@@ -1,7 +1,6 @@
-use alloc::boxed::Box;
 use alloc::collections::{BTreeMap, VecDeque};
 use alloc::string::{String, ToString};
-use alloc::{format, vec, vec::Vec};
+use alloc::vec::Vec;
 use ethabi::AbiError;
 
 use crate::abi::{

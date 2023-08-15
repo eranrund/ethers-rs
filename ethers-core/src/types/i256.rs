@@ -9,9 +9,9 @@ use crate::{
     types::U256,
     utils::ParseUnits,
 };
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
-use alloc::{format, vec, vec::Vec};
+
+use alloc::format;
+use alloc::string::String;
 use core::{
     cmp,
     fmt::{self, Write},

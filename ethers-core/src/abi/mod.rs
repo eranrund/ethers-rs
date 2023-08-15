@@ -8,7 +8,7 @@ use crate::{
 };
 use alloc::boxed::Box;
 use alloc::string::{String, ToString};
-use alloc::{format, vec, vec::Vec};
+use alloc::{format, vec::Vec};
 pub use ethabi::{self, Contract as Abi, *};
 
 mod tokens;

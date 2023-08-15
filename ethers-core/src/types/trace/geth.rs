@@ -12,10 +12,10 @@ pub use self::{
 use crate::types::{
     serde_helpers::deserialize_stringified_numeric, Address, Bytes, H256, U256, U64,
 };
-use alloc::boxed::Box;
+
 use alloc::collections::BTreeMap;
-use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::string::String;
+use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
@@ -301,7 +301,9 @@ pub mod spoof {
     /// A wrapper type that holds a complete state override set.
     #[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
     #[serde(transparent)]
-    pub struct State(#[serde(skip_serializing_if = "BTreeMap::is_empty")] BTreeMap<Address, Account>);
+    pub struct State(
+        #[serde(skip_serializing_if = "BTreeMap::is_empty")] BTreeMap<Address, Account>,
+    );
 
     impl State {
         /// Returns a mutable reference to the [`Account`] in the map.

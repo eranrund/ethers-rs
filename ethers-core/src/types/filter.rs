@@ -3,8 +3,8 @@ use crate::{
     types::{Address, BlockNumber, Bloom, Log, H160, H256, U256, U64},
     utils::keccak256,
 };
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
+
+use alloc::string::String;
 use alloc::{format, vec, vec::Vec};
 use core::ops::{Range, RangeFrom, RangeTo};
 use serde::{

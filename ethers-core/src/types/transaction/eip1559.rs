@@ -2,9 +2,7 @@ use super::{decode_to, eip2718::TypedTransaction, eip2930::AccessList, normalize
 use crate::types::{
     Address, Bytes, NameOrAddress, Signature, SignatureError, Transaction, U256, U64,
 };
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+
 use rlp::{Decodable, DecoderError, RlpStream};
 use thiserror_no_std::Error;
 

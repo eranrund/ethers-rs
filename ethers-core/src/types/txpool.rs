@@ -1,8 +1,8 @@
 use crate::types::{Address, Transaction, U256, U64};
-use alloc::boxed::Box;
+
 use alloc::collections::BTreeMap;
 use alloc::string::{String, ToString};
-use alloc::{format, vec, vec::Vec};
+use alloc::{format, vec::Vec};
 use core::{fmt, str::FromStr};
 use serde::{
     de::{self, Deserializer, Visitor},

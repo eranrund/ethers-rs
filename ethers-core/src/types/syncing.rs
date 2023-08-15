@@ -2,8 +2,7 @@
 
 use crate::types::U64;
 use alloc::boxed::Box;
-use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
 /// Structure used in `eth_syncing` RPC

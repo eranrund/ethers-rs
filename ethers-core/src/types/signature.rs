@@ -3,9 +3,9 @@ use crate::{
     types::{Address, H256, U256},
     utils::hash_message,
 };
-use alloc::{boxed::Box, borrow::ToOwned};
-use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::borrow::ToOwned;
+use alloc::string::String;
+use alloc::vec::Vec;
 use core::{convert::TryFrom, fmt, str::FromStr};
 use elliptic_curve::{consts::U32, sec1::ToEncodedPoint};
 use generic_array::GenericArray;

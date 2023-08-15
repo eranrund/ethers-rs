@@ -3,10 +3,10 @@
 //! <https://openethereum.github.io/wiki/JSONRPC-trace-module>
 
 use super::{Bytes, Opcode, H160, H256, U256};
-use alloc::boxed::Box;
+
 use alloc::collections::BTreeMap;
-use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::string::String;
+use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 
 mod filter;

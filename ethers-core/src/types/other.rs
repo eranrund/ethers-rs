@@ -1,8 +1,8 @@
 //! Support for capturing other fields
-use alloc::boxed::Box;
+
 use alloc::collections::BTreeMap;
-use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::string::String;
+
 use core::ops::{Deref, DerefMut};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use serde_json::Map;

@@ -1,7 +1,7 @@
 //! Boilerplate error definitions.
 use crate::abi::{human_readable, InvalidOutputType};
-use thiserror_no_std::Error;
 use alloc::string::String;
+use thiserror_no_std::Error;
 
 /// A type alias for std's Result with the Error as our error type.
 pub type Result<T, E = ParseError> = core::result::Result<T, E>;

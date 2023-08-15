@@ -3,9 +3,9 @@
 
 #![allow(missing_docs)]
 use crate::types::Bytes;
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+
+use alloc::string::String;
+use alloc::vec::Vec;
 use serde::{
     de::{MapAccess, SeqAccess, Visitor},
     Deserialize, Deserializer, Serialize,

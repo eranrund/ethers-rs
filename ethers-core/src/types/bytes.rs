@@ -1,8 +1,5 @@
-use alloc::boxed::Box;
-use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
-use open_fastrlp::{Decodable, Encodable};
-use serde::{Deserialize, Deserializer, Serialize, Serializer};
+use alloc::string::String;
+use alloc::vec::Vec;
 use core::{
     borrow::Borrow,
     clone::Clone,
@@ -10,6 +7,8 @@ use core::{
     ops::Deref,
     str::FromStr,
 };
+use open_fastrlp::{Decodable, Encodable};
+use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use thiserror_no_std::Error;
 
 /// Wrapper type around Bytes to deserialize/serialize "0x" prefixed ethereum hex strings

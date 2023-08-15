@@ -3,9 +3,9 @@
 #[cfg(not(feature = "celo"))]
 use crate::types::Withdrawal;
 use crate::types::{Address, Bloom, Bytes, Transaction, TxHash, H256, U256, U64};
-use alloc::boxed::Box;
+
 use alloc::string::{String, ToString};
-use alloc::{format, vec, vec::Vec};
+use alloc::{format, vec::Vec};
 use chrono::{DateTime, TimeZone, Utc};
 use core::{fmt, fmt::Formatter, str::FromStr};
 use serde::{
