@@ -2,6 +2,9 @@ use super::{eip2718::TypedTransaction, normalize_v};
 use crate::types::{
     Address, Bytes, Signature, SignatureError, Transaction, TransactionRequest, H256, U256, U64,
 };
+use alloc::boxed::Box;
+use alloc::string::{String, ToString};
+use alloc::{vec, vec::Vec};
 use open_fastrlp::{
     RlpDecodable as FastRlpDecodable, RlpDecodableWrapper as FastRlpDecodableWrapper,
     RlpEncodable as FastRlpEncodable, RlpEncodableWrapper as FastRlpEncodableWrapper,
@@ -10,7 +13,6 @@ use rlp::{
     Decodable, RlpDecodable, RlpDecodableWrapper, RlpEncodable, RlpEncodableWrapper, RlpStream,
 };
 use serde::{Deserialize, Serialize};
-use alloc::vec::Vec;
 use thiserror::Error;
 
 const NUM_EIP2930_FIELDS: usize = 8;

@@ -9,13 +9,15 @@ pub use self::{
     noop::NoopFrame,
     pre_state::{AccountState, DiffMode, PreStateConfig, PreStateFrame, PreStateMode},
 };
-use alloc::vec::Vec;
 use crate::types::{
     serde_helpers::deserialize_stringified_numeric, Address, Bytes, H256, U256, U64,
 };
+use alloc::boxed::Box;
+use alloc::collections::BTreeMap;
+use alloc::string::{String, ToString};
+use alloc::{vec, vec::Vec};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use alloc::collections::BTreeMap;
 
 // https://github.com/ethereum/go-ethereum/blob/a9ef135e2dd53682d106c6a2aede9187026cc1de/eth/tracers/logger/logger.go#L406-L411
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]

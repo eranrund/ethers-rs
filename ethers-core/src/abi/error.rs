@@ -3,7 +3,7 @@ use crate::abi::{human_readable, InvalidOutputType};
 use thiserror::Error;
 
 /// A type alias for std's Result with the Error as our error type.
-pub type Result<T, E = ParseError> = std::result::Result<T, E>;
+pub type Result<T, E = ParseError> = core::result::Result<T, E>;
 
 /// Error that can occur during human readable parsing
 #[derive(Error, Debug)]

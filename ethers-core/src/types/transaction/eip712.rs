@@ -4,12 +4,13 @@ use crate::{
     types::{serde_helpers::StringifiedNumeric, Address, Bytes, U256},
     utils::keccak256,
 };
-use ethabi::encode;
-use alloc::vec::Vec;
-use serde::{Deserialize, Deserializer, Serialize};
-use alloc::{
-    collections::{BTreeMap, HashSet}};
+use alloc::boxed::Box;
+use alloc::collections::{BTreeMap, HashSet};
+use alloc::string::{String, ToString};
+use alloc::{vec, vec::Vec};
 use core::iter::FromIterator;
+use ethabi::encode;
+use serde::{Deserialize, Deserializer, Serialize};
 
 /// Custom types for `TypedData`
 pub type Types = BTreeMap<String, Vec<Eip712DomainType>>;

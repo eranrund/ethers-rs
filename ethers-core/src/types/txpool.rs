@@ -1,11 +1,13 @@
 use crate::types::{Address, Transaction, U256, U64};
+use alloc::boxed::Box;
+use alloc::collections::BTreeMap;
+use alloc::string::{String, ToString};
+use alloc::{vec, vec::Vec};
+use core::{fmt, str::FromStr};
 use serde::{
     de::{self, Deserializer, Visitor},
     Deserialize, Serialize,
 };
-use alloc::vec::Vec;
-use alloc::{collections::BTreeMap};
-use core::{fmt, str::FromStr};
 
 /// Transaction summary as found in the Txpool Inspection property.
 #[derive(Debug, Clone, PartialEq, Eq)]

@@ -3,10 +3,12 @@
 //! The reason this exists is to circumvent ambiguity with fixed bytes arrays
 
 use crate::abi::{InvalidOutputType, Tokenizable, TokenizableItem};
+use alloc::boxed::Box;
+use alloc::string::{String, ToString};
+use alloc::{vec, vec::Vec};
+use core::ops::{Add, Sub};
 use ethabi::{ethereum_types::U256, Token};
 use serde::{Deserialize, Serialize};
-use alloc::vec::Vec;
-use core::ops::{Add, Sub};
 
 /// A wrapper for `u8`
 ///

@@ -9,7 +9,9 @@ use crate::{
     },
     utils::keccak256,
 };
-use alloc::vec::Vec;
+use alloc::boxed::Box;
+use alloc::string::{String, ToString};
+use alloc::{vec, vec::Vec};
 use rlp::Decodable;
 use serde::{Deserialize, Serialize};
 use thiserror::Error;

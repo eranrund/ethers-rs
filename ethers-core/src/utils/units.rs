@@ -1,4 +1,5 @@
 use super::ConversionError;
+use alloc::string::String;
 use core::{convert::TryFrom, fmt, str::FromStr};
 
 

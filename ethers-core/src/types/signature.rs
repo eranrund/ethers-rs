@@ -3,7 +3,10 @@ use crate::{
     types::{Address, H256, U256},
     utils::hash_message,
 };
-use alloc::vec::Vec;
+use alloc::boxed::Box;
+use alloc::string::{String, ToString};
+use alloc::{vec, vec::Vec};
+use core::{convert::TryFrom, fmt, str::FromStr};
 use elliptic_curve::{consts::U32, sec1::ToEncodedPoint};
 use generic_array::GenericArray;
 use k256::{
@@ -15,7 +18,6 @@ use k256::{
 };
 use open_fastrlp::Decodable;
 use serde::{Deserialize, Serialize};
-use core::{convert::TryFrom, fmt, str::FromStr};
 use thiserror::Error;
 
 /// An error involving a signature.

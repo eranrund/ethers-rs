@@ -4,7 +4,9 @@ use crate::{
     },
     types::{Address, Bytes, Uint8, H256, I256, U128, U256},
 };
-use alloc::vec::Vec;
+use alloc::boxed::Box;
+use alloc::string::{String, ToString};
+use alloc::{vec, vec::Vec};
 
 /// Trait for ABI encoding
 pub trait AbiEncode {

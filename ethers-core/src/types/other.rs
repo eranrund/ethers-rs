@@ -1,11 +1,13 @@
 //! Support for capturing other fields
-use serde::{de::DeserializeOwned, Deserialize, Serialize};
-use serde_json::Map;
-use alloc::vec::Vec;
+use alloc::boxed::Box;
+use alloc::string::{String, ToString};
+use alloc::{vec, vec::Vec};
 use core::{
     collections::BTreeMap,
     ops::{Deref, DerefMut},
 };
+use serde::{de::DeserializeOwned, Deserialize, Serialize};
+use serde_json::Map;
 
 /// A type that is supposed to capture additional fields that are not native to ethereum but included in ethereum adjacent networks, for example fields the [optimism `eth_getTransactionByHash` request](https://docs.alchemy.com/alchemy/apis/optimism/eth-gettransactionbyhash) returns additional fields that this type will capture
 ///

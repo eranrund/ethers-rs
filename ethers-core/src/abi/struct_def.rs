@@ -4,7 +4,9 @@ use crate::abi::{
     human_readable::{is_whitespace, parse_identifier},
     HumanReadableParser, ParamType,
 };
-use alloc::vec::Vec;
+use alloc::boxed::Box;
+use alloc::string::{String, ToString};
+use alloc::{vec, vec::Vec};
 
 /// A field declaration inside a struct
 #[derive(Debug, Clone, PartialEq)]
