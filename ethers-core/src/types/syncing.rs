@@ -1,6 +1,7 @@
 //! Types for `eth_syncing` RPC call
 
 use crate::types::U64;
+use alloc::vec::Vec;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
 /// Structure used in `eth_syncing` RPC

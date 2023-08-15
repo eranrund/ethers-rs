@@ -11,8 +11,9 @@ use crate::{
     utils::keccak256,
 };
 use rlp::{Decodable, DecoderError, RlpStream};
+use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
-use std::cmp::Ordering;
+use core::cmp::Ordering;
 
 /// Details of a signed transaction
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]

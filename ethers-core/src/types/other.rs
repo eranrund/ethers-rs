@@ -1,7 +1,8 @@
 //! Support for capturing other fields
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use serde_json::Map;
-use std::{
+use alloc::vec::Vec;
+use core::{
     collections::BTreeMap,
     ops::{Deref, DerefMut},
 };

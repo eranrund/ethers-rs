@@ -1,5 +1,6 @@
 use ethabi::Token;
 use thiserror::Error;
+use alloc::vec::Vec;
 use Token::*;
 
 /// An error thrown by [`encode_packed`].

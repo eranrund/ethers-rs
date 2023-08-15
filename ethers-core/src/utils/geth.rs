@@ -1,4 +1,5 @@
 use super::{CliqueConfig, Genesis};
+use alloc::vec::Vec;
 use crate::{
     types::{Bytes, H256},
     utils::{secret_key_to_address, unused_port},

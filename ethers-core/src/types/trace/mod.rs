@@ -4,7 +4,8 @@
 
 use super::{Bytes, Opcode, H160, H256, U256};
 use serde::{Deserialize, Serialize};
-use std::collections::BTreeMap;
+use alloc::vec::Vec;
+use alloc::collections::BTreeMap;
 
 mod filter;
 pub use filter::*;

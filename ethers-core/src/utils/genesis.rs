@@ -1,5 +1,4 @@
-use std::collections::HashMap;
-
+use alloc::collections::HashMap;
 use crate::{
     types::{
         serde_helpers::{
@@ -11,6 +10,7 @@ use crate::{
     },
     utils::from_unformatted_hex_map,
 };
+use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 
 /// This represents the chain configuration, specifying the genesis block, header fields, and hard

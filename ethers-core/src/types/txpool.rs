@@ -3,7 +3,9 @@ use serde::{
     de::{self, Deserializer, Visitor},
     Deserialize, Serialize,
 };
-use std::{collections::BTreeMap, fmt, str::FromStr};
+use alloc::vec::Vec;
+use alloc::{collections::BTreeMap};
+use core::{fmt, str::FromStr};
 
 /// Transaction summary as found in the Txpool Inspection property.
 #[derive(Debug, Clone, PartialEq, Eq)]

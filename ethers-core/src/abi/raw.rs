@@ -3,6 +3,7 @@
 
 #![allow(missing_docs)]
 use crate::types::Bytes;
+use alloc::vec::Vec;
 use serde::{
     de::{MapAccess, SeqAccess, Visitor},
     Deserialize, Deserializer, Serialize,

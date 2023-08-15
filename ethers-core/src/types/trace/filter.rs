@@ -1,10 +1,11 @@
 //! Types for the Parity Transaction-Trace Filtering API
 use crate::types::{Address, BlockNumber, Bytes, H160, H256, U256};
+use alloc::vec::Vec;
 use bytes::{Buf, BufMut};
 use open_fastrlp::DecodeError;
 use rlp::{Decodable, DecoderError, Encodable, Rlp, RlpStream};
 use serde::{Deserialize, Serialize};
-use std::fmt;
+use core::fmt;
 
 /// Trace filter
 #[derive(Debug, Default, Clone, PartialEq, Eq, Serialize)]

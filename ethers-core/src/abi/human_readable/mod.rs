@@ -1,5 +1,6 @@
 use ethabi::AbiError;
-use std::collections::{BTreeMap, HashMap, VecDeque};
+use alloc::vec::Vec;
+use alloc::collections::{BTreeMap, HashMap, VecDeque};
 
 use crate::abi::{
     error::{bail, format_err, ParseError, Result},

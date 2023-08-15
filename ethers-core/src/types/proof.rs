@@ -1,5 +1,6 @@
 use crate::types::{Address, Bytes, H256, U256, U64};
 use serde::{Deserialize, Serialize};
+use alloc::vec::Vec;
 
 #[derive(Debug, Default, Clone, PartialEq, Eq, Deserialize, Serialize)]
 pub struct StorageProof {

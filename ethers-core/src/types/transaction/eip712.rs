@@ -5,11 +5,11 @@ use crate::{
     utils::keccak256,
 };
 use ethabi::encode;
+use alloc::vec::Vec;
 use serde::{Deserialize, Deserializer, Serialize};
-use std::{
-    collections::{BTreeMap, HashSet},
-    iter::FromIterator,
-};
+use alloc::{
+    collections::{BTreeMap, HashSet}};
+use core::iter::FromIterator;
 
 /// Custom types for `TypedData`
 pub type Types = BTreeMap<String, Vec<Eip712DomainType>>;

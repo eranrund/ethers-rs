@@ -1,6 +1,7 @@
 use ethabi::RawLog;
 // Adapted from https://github.com/tomusdrw/rust-web3/blob/master/src/types/log.rs
 use crate::types::{Address, Bytes, H256, U256, U64};
+use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 
 /// A log produced by a transaction.

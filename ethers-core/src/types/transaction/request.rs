@@ -9,6 +9,7 @@ use crate::{
 
 use rlp::{Decodable, RlpStream};
 use serde::{Deserialize, Serialize};
+use alloc::vec::Vec;
 use thiserror::Error;
 
 /// An error involving a transaction request.

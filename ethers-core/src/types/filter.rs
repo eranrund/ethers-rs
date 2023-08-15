@@ -3,12 +3,13 @@ use crate::{
     types::{Address, BlockNumber, Bloom, Log, H160, H256, U256, U64},
     utils::keccak256,
 };
+use alloc::vec::Vec;
 use serde::{
     de::{DeserializeOwned, MapAccess, Visitor},
     ser::SerializeStruct,
     Deserialize, Deserializer, Serialize, Serializer,
 };
-use std::ops::{Range, RangeFrom, RangeTo};
+use core::ops::{Range, RangeFrom, RangeTo};
 
 pub type BloomFilter = Vec<Option<Bloom>>;
 

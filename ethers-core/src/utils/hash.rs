@@ -2,6 +2,7 @@
 
 use ethabi::ethereum_types::H256;
 use tiny_keccak::{Hasher, Keccak};
+use alloc::vec::Vec;
 
 /// Hash a message according to [EIP-191] (version `0x01`).
 ///

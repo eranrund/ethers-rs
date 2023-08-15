@@ -1,9 +1,9 @@
 //! Moonbeam utilities
 
-use std::collections::BTreeMap;
-
+use alloc::collections::BTreeMap;
 use generic_array::GenericArray;
 use k256::SecretKey;
+use alloc::vec::Vec;
 
 /// Returns the private developer keys <https://docs.moonbeam.network/builders/get-started/networks/moonbeam-dev/#pre-funded-development-accounts>
 pub fn dev_keys() -> Vec<SecretKey> {

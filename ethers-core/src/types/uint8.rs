@@ -5,7 +5,8 @@
 use crate::abi::{InvalidOutputType, Tokenizable, TokenizableItem};
 use ethabi::{ethereum_types::U256, Token};
 use serde::{Deserialize, Serialize};
-use std::ops::{Add, Sub};
+use alloc::vec::Vec;
+use core::ops::{Add, Sub};
 
 /// A wrapper for `u8`
 ///

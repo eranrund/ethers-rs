@@ -7,6 +7,7 @@ use crate::{
     types::{Address, Bytes, H256, I256, U128, U256},
 };
 use arrayvec::ArrayVec;
+use alloc::vec::Vec;
 use thiserror::Error;
 
 #[derive(Clone, Debug, Error)]

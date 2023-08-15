@@ -1,6 +1,7 @@
 use ethabi::{
     AbiError, Constructor, Event, EventParam, Function, Param, ParamType, StateMutability,
 };
+use alloc::vec::Vec;
 use std::{fmt, iter::Peekable, str::CharIndices};
 use unicode_xid::UnicodeXID;
 

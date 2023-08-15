@@ -4,6 +4,7 @@
 use crate::types::Withdrawal;
 use crate::types::{Address, Bloom, Bytes, Transaction, TxHash, H256, U256, U64};
 use chrono::{DateTime, TimeZone, Utc};
+use alloc::vec::Vec;
 use serde::{
     de::{MapAccess, Visitor},
     ser::SerializeStruct,

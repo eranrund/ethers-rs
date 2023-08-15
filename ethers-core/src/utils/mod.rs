@@ -1,5 +1,7 @@
 /// Utilities for launching a ganache-cli testnet instance
-#[cfg(not(target_arch = "wasm32"))]
+
+// ERAN
+/*#[cfg(not(target_arch = "wasm32"))]
 mod ganache;
 #[cfg(not(target_arch = "wasm32"))]
 pub use ganache::{Ganache, GanacheInstance};
@@ -18,7 +20,7 @@ pub use genesis::{ChainConfig, CliqueConfig, EthashConfig, Genesis, GenesisAccou
 #[cfg(not(target_arch = "wasm32"))]
 mod anvil;
 #[cfg(not(target_arch = "wasm32"))]
-pub use anvil::{Anvil, AnvilInstance};
+pub use anvil::{Anvil, AnvilInstance};*/
 
 /// Moonbeam utils
 pub mod moonbeam;
@@ -40,7 +42,7 @@ use crate::types::{Address, Bytes, ParseI256Error, H256, I256, U256};
 use alloc::vec::Vec;
 use ethabi::ethereum_types::FromDecStrErr;
 use k256::ecdsa::SigningKey;
-use std::{
+use core::{
     collections::HashMap,
     convert::{TryFrom, TryInto},
     fmt,

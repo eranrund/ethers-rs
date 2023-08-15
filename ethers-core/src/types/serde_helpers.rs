@@ -2,7 +2,8 @@
 
 use crate::types::{BlockNumber, U256, U64};
 use serde::{Deserialize, Deserializer};
-use std::{
+use alloc::vec::Vec;
+use core::{
     convert::{TryFrom, TryInto},
     str::FromStr,
 };

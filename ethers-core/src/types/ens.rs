@@ -1,6 +1,7 @@
 use crate::types::Address;
 use rlp::{Decodable, Encodable, RlpStream};
 use serde::{ser::Error as SerializationError, Deserialize, Deserializer, Serialize, Serializer};
+use alloc::vec::Vec;
 use std::{cmp::Ordering, str::FromStr};
 
 /// ENS name or Ethereum Address. Not RLP encoded/serialized if it's a name.
