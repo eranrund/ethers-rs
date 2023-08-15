@@ -12,7 +12,7 @@ use alloc::string::{String, ToString};
 use alloc::{vec, vec::Vec};
 use rlp::{Decodable, RlpStream};
 use serde::{Deserialize, Serialize};
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 /// An error involving a transaction request.
 #[derive(Debug, Error)]

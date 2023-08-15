@@ -4,8 +4,8 @@ use crate::{
     types::{serde_helpers::StringifiedNumeric, Address, Bytes, U256},
     utils::keccak256,
 };
-use alloc::boxed::Box;
-use alloc::collections::{BTreeMap, HashSet};
+use alloc::collections::{BTreeMap, BTreeSet};
+use alloc::format;
 use alloc::string::{String, ToString};
 use alloc::{vec, vec::Vec};
 use core::iter::FromIterator;
@@ -34,7 +34,7 @@ pub const EIP712_DOMAIN_TYPE_HASH_WITH_SALT: [u8; 32] = [
 ];
 
 /// An EIP-712 error.
-#[derive(Debug, thiserror::Error)]
+#[derive(Debug, thiserror_no_std::Error)]
 pub enum Eip712Error {
     #[error("Failed to serialize serde JSON object")]
     SerdeJsonError(#[from] serde_json::Error),
@@ -43,7 +43,7 @@ pub enum Eip712Error {
     #[error("Failed to make struct hash from values")]
     FailedToEncodeStruct,
     #[error("Failed to convert slice into byte array")]
-    TryFromSliceError(#[from] std::array::TryFromSliceError),
+    TryFromSliceError(#[from] core::array::TryFromSliceError),
     #[error("Nested Eip712 struct not implemented. Failed to parse.")]
     NestedEip712StructNotImplemented,
     #[error("Error from Eip712 struct: {0:?}")]
@@ -63,7 +63,8 @@ pub enum Eip712Error {
 /// struct in the verifying ethereum contract that matches its signature.
 pub trait Eip712 {
     /// User defined error type;
-    type Error: std::error::Error + Send + Sync + std::fmt::Debug;
+    // TODO ERAN
+    type Error: core::fmt::Display + Send + Sync + core::fmt::Debug;
 
     /// Default implementation of the domain separator;
     fn domain_separator(&self) -> Result<[u8; 32], Self::Error> {
@@ -437,7 +438,7 @@ pub fn hash_type(primary_type: &str, types: &Types) -> Result<[u8; 32], Eip712Er
 ///
 /// Returns the encoded representation of the field.
 pub fn encode_type(primary_type: &str, types: &Types) -> Result<String, Eip712Error> {
-    let mut names = HashSet::new();
+    let mut names = BTreeSet::new();
     find_type_dependencies(primary_type, types, &mut names);
     // need to ensure primary_type is first in the list
     names.remove(primary_type);
@@ -469,7 +470,7 @@ pub fn encode_type(primary_type: &str, types: &Types) -> Result<String, Eip712Er
 fn find_type_dependencies<'a>(
     primary_type: &'a str,
     types: &'a Types,
-    found: &mut HashSet<&'a str>,
+    found: &mut BTreeSet<&'a str>,
 ) {
     if found.contains(primary_type) {
         return;

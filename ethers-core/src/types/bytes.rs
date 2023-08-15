@@ -3,14 +3,14 @@ use alloc::string::{String, ToString};
 use alloc::{vec, vec::Vec};
 use open_fastrlp::{Decodable, Encodable};
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
-use std::{
+use core::{
     borrow::Borrow,
     clone::Clone,
     fmt::{Debug, Display, Formatter, LowerHex, Result as FmtResult},
     ops::Deref,
     str::FromStr,
 };
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 /// Wrapper type around Bytes to deserialize/serialize "0x" prefixed ethereum hex strings
 #[derive(Clone, Default, PartialEq, Eq, Hash, Serialize, Deserialize, Ord, PartialOrd)]

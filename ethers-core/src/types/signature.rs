@@ -3,7 +3,7 @@ use crate::{
     types::{Address, H256, U256},
     utils::hash_message,
 };
-use alloc::boxed::Box;
+use alloc::{boxed::Box, borrow::ToOwned};
 use alloc::string::{String, ToString};
 use alloc::{vec, vec::Vec};
 use core::{convert::TryFrom, fmt, str::FromStr};
@@ -18,7 +18,7 @@ use k256::{
 };
 use open_fastrlp::Decodable;
 use serde::{Deserialize, Serialize};
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 /// An error involving a signature.
 #[derive(Debug, Error)]

@@ -3,7 +3,7 @@ use alloc::boxed::Box;
 use alloc::string::{String, ToString};
 use alloc::{vec, vec::Vec};
 use serde::{Deserialize, Serialize, Serializer};
-use std::{
+use core::{
     convert::{TryFrom, TryInto},
     fmt,
     time::Duration,
@@ -632,6 +632,8 @@ impl Chain {
         Some(api_key_name)
     }
 
+    // ERAN
+    /*
     /// Returns the chain's blockchain explorer's API key, from the environment variable with the
     /// name specified in [`etherscan_api_key_name`](Chain::etherscan_api_key_name).
     ///
@@ -647,6 +649,7 @@ impl Chain {
     pub fn etherscan_api_key(&self) -> Option<String> {
         self.etherscan_api_key_name().and_then(|name| std::env::var(name).ok())
     }
+    */
 }
 
 #[cfg(test)]

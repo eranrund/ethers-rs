@@ -6,7 +6,7 @@ use alloc::boxed::Box;
 use alloc::string::{String, ToString};
 use alloc::{vec, vec::Vec};
 use rlp::{Decodable, DecoderError, RlpStream};
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 /// EIP-1559 transactions have 9 fields
 const NUM_TX_FIELDS: usize = 9;

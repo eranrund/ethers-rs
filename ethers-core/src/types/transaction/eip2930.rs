@@ -13,7 +13,7 @@ use rlp::{
     Decodable, RlpDecodable, RlpDecodableWrapper, RlpEncodable, RlpEncodableWrapper, RlpStream,
 };
 use serde::{Deserialize, Serialize};
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 const NUM_EIP2930_FIELDS: usize = 8;
 

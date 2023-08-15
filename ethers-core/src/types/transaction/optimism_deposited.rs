@@ -2,7 +2,7 @@ use super::rlp_opt;
 use crate::types::{Bytes, Signature, Transaction, TransactionRequest, H256, U256};
 use rlp::{Decodable, RlpStream};
 use serde::{Deserialize, Serialize};
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 const NUM_TX_FIELDS: usize = 8;
 
@@ -129,8 +129,8 @@ mod test {
         transaction::eip2718::TypedTransaction, Address, Bytes, NameOrAddress, Transaction, H256,
         U256, U64,
     };
+    use core::str::FromStr;
     use rlp::Decodable;
-    use std::str::FromStr;
 
     #[test]
     fn test_rlp_encode_deposited_tx() {

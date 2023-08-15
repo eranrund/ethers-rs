@@ -5,7 +5,7 @@
 use crate::abi::{InvalidOutputType, Tokenizable, TokenizableItem};
 use alloc::boxed::Box;
 use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::{format, vec, vec::Vec};
 use core::ops::{Add, Sub};
 use ethabi::{ethereum_types::U256, Token};
 use serde::{Deserialize, Serialize};

@@ -186,7 +186,7 @@ impl_abi_codec_tuple!(20, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::fmt::Debug;
+    use core::fmt::Debug;
 
     use crate::abi::{AbiArrayType, TokenizableItem};
     use rand::{
@@ -248,7 +248,7 @@ mod tests {
     fn u8_codec() {
         assert_codec(random::<u8>());
         assert_codec((random::<u8>(), random::<u8>()));
-        assert_codec(std::iter::repeat_with(random::<u8>).take(10).collect::<Vec<_>>());
+        assert_codec(core::iter::repeat_with(random::<u8>).take(10).collect::<Vec<_>>());
         assert_codec([random::<u8>(); 10]);
     }
 

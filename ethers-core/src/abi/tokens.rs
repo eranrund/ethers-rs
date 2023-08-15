@@ -8,9 +8,9 @@ use crate::{
 };
 use alloc::boxed::Box;
 use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::{format, vec, vec::Vec};
 use arrayvec::ArrayVec;
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 #[derive(Clone, Debug, Error)]
 #[error("{0}")]
@@ -25,7 +25,7 @@ pub trait Detokenize {
 }
 
 impl Detokenize for () {
-    fn from_tokens(_: Vec<Token>) -> std::result::Result<Self, InvalidOutputType> {
+    fn from_tokens(_: Vec<Token>) -> core::result::Result<Self, InvalidOutputType> {
         Ok(())
     }
 }
@@ -240,7 +240,7 @@ macro_rules! eth_uint_tokenizable {
             fn from_token(token: Token) -> Result<Self, InvalidOutputType> {
                 match token {
                     Token::Int(data) | Token::Uint(data) => {
-                        Ok(::std::convert::TryInto::try_into(data).unwrap())
+                        Ok(::core::convert::TryInto::try_into(data).unwrap())
                     }
                     other => {
                         Err(InvalidOutputType(format!("Expected `{}`, got {:?}", $name, other))

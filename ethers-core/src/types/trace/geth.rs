@@ -219,7 +219,6 @@ pub struct GethDebugTracingCallOptions {
 /// [state override set](https://geth.ethereum.org/docs/rpc/ns-eth#3-object---state-override-set)
 pub mod spoof {
     use super::*;
-    use std::collections::HashMap;
 
     /// The state elements to override for a particular account.
     #[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
@@ -269,10 +268,10 @@ pub mod spoof {
     pub enum Storage {
         /// State Diff
         #[serde(rename = "stateDiff")]
-        Diff(HashMap<H256, H256>),
+        Diff(BTreeMap<H256, H256>),
         /// State override
         #[serde(rename = "state")]
-        Replace(HashMap<H256, H256>),
+        Replace(BTreeMap<H256, H256>),
     }
 
     /// The default storage override is a diff on the existing state of the account.
@@ -281,8 +280,8 @@ pub mod spoof {
             Self::Diff(Default::default())
         }
     }
-    impl std::ops::Deref for Storage {
-        type Target = HashMap<H256, H256>;
+    impl core::ops::Deref for Storage {
+        type Target = BTreeMap<H256, H256>;
         fn deref(&self) -> &Self::Target {
             match self {
                 Self::Diff(map) => map,
@@ -290,7 +289,7 @@ pub mod spoof {
             }
         }
     }
-    impl std::ops::DerefMut for Storage {
+    impl core::ops::DerefMut for Storage {
         fn deref_mut(&mut self) -> &mut Self::Target {
             match self {
                 Self::Diff(map) => map,
@@ -302,7 +301,7 @@ pub mod spoof {
     /// A wrapper type that holds a complete state override set.
     #[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
     #[serde(transparent)]
-    pub struct State(#[serde(skip_serializing_if = "HashMap::is_empty")] HashMap<Address, Account>);
+    pub struct State(#[serde(skip_serializing_if = "BTreeMap::is_empty")] BTreeMap<Address, Account>);
 
     impl State {
         /// Returns a mutable reference to the [`Account`] in the map.

@@ -1,7 +1,7 @@
 use alloc::boxed::Box;
-use alloc::collections::{BTreeMap, HashMap, VecDeque};
+use alloc::collections::{BTreeMap, VecDeque};
 use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::{format, vec, vec::Vec};
 use ethabi::AbiError;
 
 use crate::abi::{
@@ -15,19 +15,19 @@ pub mod lexer;
 /// A parser that turns a "human readable abi" into a `Abi`
 pub struct AbiParser {
     /// solidity structs
-    pub structs: HashMap<String, SolStruct>,
+    pub structs: BTreeMap<String, SolStruct>,
     /// solidity structs as tuples
-    pub struct_tuples: HashMap<String, Vec<ParamType>>,
+    pub struct_tuples: BTreeMap<String, Vec<ParamType>>,
     /// (function name, param name) -> struct which are the identifying properties we get the name
     /// from ethabi.
-    pub function_params: HashMap<(String, String), String>,
+    pub function_params: BTreeMap<(String, String), String>,
     /// (event name, idx) -> struct which are the identifying properties we get the name
     /// from ethabi.
     ///
     /// Note: we need to map the index of the event here because events can contain nameless inputs
-    pub event_params: HashMap<(String, usize), String>,
+    pub event_params: BTreeMap<(String, usize), String>,
     /// (function name) -> `Vec<structs>` all structs the function returns
-    pub outputs: HashMap<String, Vec<String>>,
+    pub outputs: BTreeMap<String, Vec<String>>,
 }
 
 impl AbiParser {
@@ -176,7 +176,7 @@ impl AbiParser {
     pub fn with_structs(structs: Vec<SolStruct>) -> Self {
         Self {
             structs: structs.into_iter().map(|s| (s.name().to_string(), s)).collect(),
-            struct_tuples: HashMap::new(),
+            struct_tuples: BTreeMap::new(),
             function_params: Default::default(),
             event_params: Default::default(),
             outputs: Default::default(),

@@ -519,7 +519,7 @@ mod tests {
     use crate::types::transaction::eip2930::AccessListItem;
 
     use super::*;
-    use std::str::FromStr;
+    use core::str::FromStr;
 
     #[test]
     fn decode_transaction_response() {

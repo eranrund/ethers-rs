@@ -1,5 +1,6 @@
 use crate::types::{serde_helpers::deserialize_stringified_numeric_opt, Address, H256, U256};
 use alloc::collections::BTreeMap;
+use alloc::string::String;
 use serde::{Deserialize, Serialize};
 
 // https://github.com/ethereum/go-ethereum/blob/91cb6f863a965481e51d5d9c0e5ccd54796fd967/eth/tracers/native/prestate.go#L38

@@ -11,7 +11,7 @@ use crate::{
 };
 use alloc::boxed::Box;
 use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::{format, vec, vec::Vec};
 use core::{
     cmp,
     fmt::{self, Write},
@@ -20,7 +20,7 @@ use core::{
 };
 use ethabi::ethereum_types::FromDecStrErr;
 use serde::{Deserialize, Serialize};
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 /// The error type that is returned when conversion to or from a 256-bit integer fails.
 #[derive(Clone, Copy, Debug, Error)]
@@ -1619,9 +1619,9 @@ fn handle_overflow((result, overflow): (I256, bool)) -> I256 {
 mod tests {
     use super::*;
     use crate::abi::Tokenizable;
+    use core::ops::Neg;
     use once_cell::sync::Lazy;
     use serde_json::json;
-    use std::ops::Neg;
 
     static MIN_ABS: Lazy<U256> = Lazy::new(|| U256::from(1) << 255);
 

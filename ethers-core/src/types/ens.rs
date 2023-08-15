@@ -1,10 +1,10 @@
 use crate::types::Address;
 use alloc::boxed::Box;
 use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::{format, vec, vec::Vec};
+use core::{cmp::Ordering, str::FromStr};
 use rlp::{Decodable, Encodable, RlpStream};
 use serde::{ser::Error as SerializationError, Deserialize, Deserializer, Serialize, Serializer};
-use std::{cmp::Ordering, str::FromStr};
 
 /// ENS name or Ethereum Address. Not RLP encoded/serialized if it's a name.
 #[derive(Clone, Debug, PartialEq, Eq)]

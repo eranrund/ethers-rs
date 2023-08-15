@@ -1,10 +1,11 @@
+use alloc::borrow::ToOwned;
 use alloc::boxed::Box;
 use alloc::string::{String, ToString};
 use alloc::{vec, vec::Vec};
+use core::{fmt, iter::Peekable, str::CharIndices};
 use ethabi::{
     AbiError, Constructor, Event, EventParam, Function, Param, ParamType, StateMutability,
 };
-use std::{fmt, iter::Peekable, str::CharIndices};
 use unicode_xid::UnicodeXID;
 
 pub type Spanned<Token, Loc, Error> = Result<(Loc, Token, Loc), Error>;
@@ -146,7 +147,7 @@ impl<'input> fmt::Display for Token<'input> {
     }
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, thiserror::Error)]
+#[derive(Debug, PartialEq, Eq, Clone, thiserror_no_std::Error)]
 pub enum LexerError {
     #[error("UnrecognisedToken {0}:{1} `{2}`")]
     UnrecognisedToken(usize, usize, String),

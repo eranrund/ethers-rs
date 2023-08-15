@@ -50,7 +50,7 @@ pub fn u256_from_f64_saturating(mut f: f64) -> U256 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::f64;
+    use core::f64;
 
     #[test]
     fn test_small_integers() {

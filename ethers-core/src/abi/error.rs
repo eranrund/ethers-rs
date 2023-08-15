@@ -1,6 +1,7 @@
 //! Boilerplate error definitions.
 use crate::abi::{human_readable, InvalidOutputType};
-use thiserror::Error;
+use thiserror_no_std::Error;
+use alloc::string::String;
 
 /// A type alias for std's Result with the Error as our error type.
 pub type Result<T, E = ParseError> = core::result::Result<T, E>;
@@ -20,7 +21,7 @@ pub enum ParseError {
 
 macro_rules! _format_err {
     ($($tt:tt)*) => {
-        $crate::abi::ParseError::Message(format!($($tt)*))
+        $crate::abi::ParseError::Message(::alloc::format!($($tt)*))
     };
 }
 pub(crate) use _format_err as format_err;

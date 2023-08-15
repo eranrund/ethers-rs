@@ -5,15 +5,15 @@ use crate::types::Withdrawal;
 use crate::types::{Address, Bloom, Bytes, Transaction, TxHash, H256, U256, U64};
 use alloc::boxed::Box;
 use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::{format, vec, vec::Vec};
 use chrono::{DateTime, TimeZone, Utc};
+use core::{fmt, fmt::Formatter, str::FromStr};
 use serde::{
     de::{MapAccess, Visitor},
     ser::SerializeStruct,
     Deserialize, Deserializer, Serialize, Serializer,
 };
-use std::{fmt, fmt::Formatter, str::FromStr};
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 /// The block type returned from RPC calls.
 ///
@@ -501,7 +501,7 @@ impl<'de> Deserialize<'de> for BlockId {
         impl<'de> Visitor<'de> for BlockIdVisitor {
             type Value = BlockId;
 
-            fn expecting(&self, formatter: &mut Formatter) -> std::fmt::Result {
+            fn expecting(&self, formatter: &mut Formatter) -> core::fmt::Result {
                 formatter.write_str("Block identifier following EIP-1898")
             }
 

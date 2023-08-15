@@ -1,4 +1,4 @@
-use alloc::collections::BTreeMap;
+use alloc::{collections::BTreeMap, string::String};
 use serde::{Deserialize, Serialize};
 
 // https://github.com/ethereum/go-ethereum/blob/91cb6f863a965481e51d5d9c0e5ccd54796fd967/eth/tracers/native/4byte.go#L48

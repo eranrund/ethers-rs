@@ -26,6 +26,7 @@ pub use anvil::{Anvil, AnvilInstance};*/
 pub mod moonbeam;
 
 mod hash;
+use alloc::borrow::ToOwned;
 pub use hash::{hash_message, id, keccak256, serialize};
 
 mod units;
@@ -39,17 +40,16 @@ pub use rlp;
 pub use hex;
 
 use crate::types::{Address, Bytes, ParseI256Error, H256, I256, U256};
-use alloc::boxed::Box;
+use alloc::collections::BTreeMap;
 use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::{format, vec::Vec};
 use core::{
-    collections::HashMap,
     convert::{TryFrom, TryInto},
     fmt,
 };
 use ethabi::ethereum_types::FromDecStrErr;
 use k256::ecdsa::SigningKey;
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 /// I256 overflows for numbers wider than 77 units.
 const OVERFLOW_I256_UNITS: usize = 77;
@@ -67,9 +67,9 @@ pub enum ConversionError {
     #[error("bytes32 strings must not exceed 32 bytes in length")]
     TextTooLong,
     #[error(transparent)]
-    Utf8Error(#[from] std::str::Utf8Error),
+    Utf8Error(#[from] core::str::Utf8Error),
     #[error(transparent)]
-    InvalidFloat(#[from] std::num::ParseFloatError),
+    InvalidFloat(#[from] core::num::ParseFloatError),
     #[error(transparent)]
     FromDecStrError(#[from] FromDecStrErr),
     #[error("Overflow parsing string")]
@@ -79,7 +79,7 @@ pub enum ConversionError {
     #[error("Invalid address checksum")]
     InvalidAddressChecksum,
     #[error(transparent)]
-    FromHexError(<Address as std::str::FromStr>::Err),
+    FromHexError(<Address as core::str::FromStr>::Err),
 }
 
 /// 1 Ether = 1e18 Wei == 0x0de0b6b3a7640000 Wei
@@ -474,7 +474,7 @@ pub fn parse_bytes32_string(bytes: &[u8; 32]) -> Result<&str, ConversionError> {
         length += 1;
     }
 
-    Ok(std::str::from_utf8(&bytes[..length])?)
+    Ok(core::str::from_utf8(&bytes[..length])?)
 }
 
 /// The default EIP-1559 fee estimator which is based on the work by [MyCrypto](https://github.com/MyCryptoHQ/MyCrypto/blob/master/src/services/ApiService/Gas/eip1559.ts)
@@ -483,7 +483,7 @@ pub fn eip1559_default_estimator(base_fee_per_gas: U256, rewards: Vec<Vec<U256>>
         if base_fee_per_gas < U256::from(EIP1559_FEE_ESTIMATION_PRIORITY_FEE_TRIGGER) {
             U256::from(EIP1559_FEE_ESTIMATION_DEFAULT_PRIORITY_FEE)
         } else {
-            std::cmp::max(
+            core::cmp::max(
                 estimate_priority_fee(rewards),
                 U256::from(EIP1559_FEE_ESTIMATION_DEFAULT_PRIORITY_FEE),
             )
@@ -515,19 +515,19 @@ where
     Ok(H256::from_slice(&padded))
 }
 
-/// Deserializes the input into an Option<HashMap<H256, H256>>, using from_unformatted_hex to
+/// Deserializes the input into an Option<BTreeMap<H256, H256>>, using from_unformatted_hex to
 /// deserialize the keys and values.
 pub fn from_unformatted_hex_map<'de, D>(
     deserializer: D,
-) -> Result<Option<HashMap<H256, H256>>, D::Error>
+) -> Result<Option<BTreeMap<H256, H256>>, D::Error>
 where
     D: Deserializer<'de>,
 {
-    let map = Option::<HashMap<Bytes, Bytes>>::deserialize(deserializer)?;
+    let map = Option::<BTreeMap<Bytes, Bytes>>::deserialize(deserializer)?;
     match map {
         Some(mut map) => {
-            let mut res_map = HashMap::new();
-            for (k, v) in map.drain() {
+            let mut res_map = BTreeMap::new();
+            while let Some((k, v)) = map.pop_first() {
                 let k_deserialized = from_bytes_to_h256::<'de, D>(k)?;
                 let v_deserialized = from_bytes_to_h256::<'de, D>(v)?;
                 res_map.insert(k_deserialized, v_deserialized);
@@ -600,6 +600,8 @@ fn base_fee_surged(base_fee_per_gas: U256) -> U256 {
 ///
 /// Does not guarantee that the given port is unused after the function exists, just that it was
 /// unused before the function started (i.e., it does not reserve a port).
+// ERAN
+/*
 #[cfg(not(target_arch = "wasm32"))]
 pub(crate) fn unused_port() -> u16 {
     let listener = std::net::TcpListener::bind("127.0.0.1:0")
@@ -609,6 +611,7 @@ pub(crate) fn unused_port() -> u16 {
         listener.local_addr().expect("Failed to read TCP listener local_addr to find unused port");
     local_addr.port()
 }
+*/
 
 #[cfg(test)]
 mod tests {

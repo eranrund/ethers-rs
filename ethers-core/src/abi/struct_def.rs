@@ -6,7 +6,7 @@ use crate::abi::{
 };
 use alloc::boxed::Box;
 use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::{format, vec, vec::Vec};
 
 /// A field declaration inside a struct
 #[derive(Debug, Clone, PartialEq)]

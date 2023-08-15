@@ -8,7 +8,7 @@ use crate::{
 };
 use alloc::boxed::Box;
 use alloc::string::{String, ToString};
-use alloc::{vec, vec::Vec};
+use alloc::{format, vec, vec::Vec};
 pub use ethabi::{self, Contract as Abi, *};
 
 mod tokens;
@@ -229,7 +229,7 @@ macro_rules! impl_abi_type_tuple {
         {
             fn param_type() -> ParamType {
                 ParamType::Tuple(
-                    ::std::vec![
+                    ::alloc::vec![
                          $(
                            $ty::param_type(),
                         )+

@@ -1,11 +1,9 @@
 //! Support for capturing other fields
 use alloc::boxed::Box;
+use alloc::collections::BTreeMap;
 use alloc::string::{String, ToString};
 use alloc::{vec, vec::Vec};
-use core::{
-    collections::BTreeMap,
-    ops::{Deref, DerefMut},
-};
+use core::ops::{Deref, DerefMut};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use serde_json::Map;
 
@@ -158,7 +156,7 @@ impl AsRef<BTreeMap<String, serde_json::Value>> for OtherFields {
 
 impl IntoIterator for OtherFields {
     type Item = (String, serde_json::Value);
-    type IntoIter = std::collections::btree_map::IntoIter<String, serde_json::Value>;
+    type IntoIter = alloc::collections::btree_map::IntoIter<String, serde_json::Value>;
 
     fn into_iter(self) -> Self::IntoIter {
         self.inner.into_iter()
@@ -167,7 +165,7 @@ impl IntoIterator for OtherFields {
 
 impl<'a> IntoIterator for &'a OtherFields {
     type Item = (&'a String, &'a serde_json::Value);
-    type IntoIter = std::collections::btree_map::Iter<'a, String, serde_json::Value>;
+    type IntoIter = alloc::collections::btree_map::Iter<'a, String, serde_json::Value>;
 
     fn into_iter(self) -> Self::IntoIter {
         self.as_ref().iter()

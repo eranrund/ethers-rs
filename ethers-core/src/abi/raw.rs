@@ -18,7 +18,7 @@ pub struct RawAbi(Vec<Item>);
 
 impl IntoIterator for RawAbi {
     type Item = Item;
-    type IntoIter = std::vec::IntoIter<Self::Item>;
+    type IntoIter = alloc::vec::IntoIter<Self::Item>;
 
     #[inline]
     fn into_iter(self) -> Self::IntoIter {
@@ -31,7 +31,7 @@ struct RawAbiVisitor;
 impl<'de> Visitor<'de> for RawAbiVisitor {
     type Value = RawAbi;
 
-    fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+    fn expecting(&self, formatter: &mut core::fmt::Formatter) -> core::fmt::Result {
         formatter.write_str("a sequence or map with `abi` key")
     }
 
@@ -159,7 +159,7 @@ struct AbiObjectVisitor;
 impl<'de> Visitor<'de> for AbiObjectVisitor {
     type Value = AbiObject;
 
-    fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+    fn expecting(&self, formatter: &mut core::fmt::Formatter) -> core::fmt::Result {
         formatter.write_str("a sequence or map with `abi` key")
     }
 

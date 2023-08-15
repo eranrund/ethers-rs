@@ -14,7 +14,7 @@ use alloc::string::{String, ToString};
 use alloc::{vec, vec::Vec};
 use rlp::Decodable;
 use serde::{Deserialize, Serialize};
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 #[cfg(feature = "optimism")]
 use super::optimism_deposited::{
@@ -669,7 +669,7 @@ mod tests {
 
     use super::*;
     use crate::types::{Address, U256};
-    use std::str::FromStr;
+    use core::str::FromStr;
 
     #[test]
     fn serde_legacy_tx() {
