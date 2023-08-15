@@ -12,7 +12,7 @@ pub enum ParseError {
     #[error("{0}")]
     Message(String),
     // ethabi parser error
-    #[error(transparent)]
+    #[error("{0:?}")]
     ParseError(#[from] ethabi::Error),
     // errors from human readable lexer
     #[error(transparent)]
@@ -36,7 +36,7 @@ pub(crate) use _bail as bail;
 #[derive(Error, Debug)]
 pub enum AbiError {
     /// Thrown when the ABI decoding fails
-    #[error(transparent)]
+    #[error("{0:?}")]
     DecodingError(#[from] ethabi::Error),
 
     /// Thrown when detokenizing an argument
